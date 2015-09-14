@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:https="http://www.mulesoft.org/schema/mule/https" xmlns:core="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:jersey="http://www.mulesoft.org/schema/mule/jersey" 
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" 
+	xmlns="http://www.mulesoft.org/schema/mule/core" 
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" 
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.1" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:springmongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/jersey http://www.mulesoft.org/schema/mule/jersey/current/mule-jersey.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+http://www.mulesoft.org/schema/mule/https http://www.mulesoft.org/schema/mule/https/current/mule-https.xsd
+http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd">
+
+<!--  http://www.springframework.org/schema/beans/spring-beans-current.xsd -->
+
+	<context:property-placeholder location="classpath:passslot.properties" />
+
+    <spring:beans>
+        <spring:bean id="passutil" name="passutil" class="com.capgemini.passslot.utility.PassslotUtility">
+        	<spring:property name="authorizeHeader" value="${passlot.authorizeHeader}"/>
+        	<spring:property name="passslotId" value="${passslot.id}"/>
+        </spring:bean>
+                
+        <spring:bean id="createpass" class="com.capgemini.passslot.resource.CreatePassResource">
+        	<spring:property name="passutil" ref="passutil"/>
+        </spring:bean>
+     </spring:beans>
+     
+    <!-- <data-mapper:config name="json_to_json" transformationGraphPath="json_to_json.grf" doc:name="json_to_json"/> -->
+ 	
+    <flow name="passslotFlow1" doc:name="passslotFlow1">
+    
+        <http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="${http.port}" doc:name="HTTP" path="${http.path}"/>
+        <!-- <logger message="I am inside calling rest" level="INFO" doc:name="Logger"/> -->
+        <processor-chain doc:name="Processor Chain">
+            <jersey:resources doc:name="REST">
+                <component>
+                    <spring-object bean="createpass"/>
+                </component>
+            </jersey:resources>
+        </processor-chain>
+    </flow>
+    
+	<!-- This flow does not work because of http connector issue with https endpoint.	
+	    <flow name="passslotFlow" doc:name="passslotFlow">
+	    	<http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="8091" doc:name="HTTP" path="${http.path}"/>
+	    	<logger message="I am inside calling rest for passslotFlow2" level="INFO" doc:name="Logger"/>
+	        <data-mapper:transform config-ref="json_to_json" doc:name="JSON To JSON"/>
+	
+	       <logger message="#[payload]" level="INFO" doc:name="output"/>
+	        <message-properties-transformer doc:name="Message Properties">
+	            <add-message-property key="Authorization" value="kcBhararTOMywFcLkTfEStxTaGtgwqRjBcYrBYHKgtolQkJOKzdXlNpoMgBThtOH"/>
+	            <add-message-property key="Content-Type" value="application/json"/>
+	            <add-message-property key="https.protocols" value="TLSv1"/>
+	        </message-properties-transformer>
+	        <https:outbound-endpoint exchange-pattern="request-response" method="POST" address="https://api.passslot.com/v1/templates/5709564819275776/pass" contentType="application/json" doc:name="HTTP"/>       
+	    </flow>
+	-->
+     
+</mule>

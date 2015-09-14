@@ -1,0 +1,11 @@
+{
+  "swaggerVersion" : "1.2",
+  "apiVersion" : "1",
+  "apis" : [ {
+    "path" : "/pass.{format}"
+  } ],
+  "info" : {
+    "title" : "PassSlot Services",
+    "description" : "This API provides  Services for OSAP."
+  }
+}

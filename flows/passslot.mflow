@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="passslot">
+    <global-element name="Property Placeholder" type="http://www.springframework.org/schema/context/property-placeholder" entity-id="Property Placeholder#1">
+        <properties>
+            <property name="ignore-resource-not-found"/>
+            <property name="file-encoding"/>
+            <property name="location" value="classpath:passslot.properties"/>
+            <property name="properties-ref"/>
+            <property name="local-override"/>
+            <property name="system-properties-mode"/>
+            <property name="ignore-unresolvable"/>
+            <property name="order"/>
+            <property name="auxiliary;index" value="1"/>
+        </properties>
+    </global-element>
+    <global-element name="Bean" type="http://www.springframework.org/schema/beans/bean" entity-id="Bean#1">
+        <properties>
+            <property name="parent"/>
+            <property name="autowire-candidate"/>
+            <property name="autowire"/>
+            <property name="lazy-init"/>
+            <property name="init-method"/>
+            <property name="abstract"/>
+            <property name="auxiliary;wrapIn" value="2"/>
+            <property name="auxiliary;index" value="3"/>
+            <property name="depends-on"/>
+            <property name="factory-method"/>
+            <property name="children"/>
+            <property name="scope"/>
+            <property name="factory-bean"/>
+            <property name="name" value="passutil"/>
+            <property name="id" value="passutil"/>
+            <property name="destroy-method"/>
+            <property name="auxiliary;wrappedIn" value="beans@spring@http://www.springframework.org/schema/beans"/>
+            <property name="class" value="com.capgemini.passslot.utility.PassslotUtility"/>
+            <property name="primary"/>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;0">
+                <property name="name" value="authorizeHeader"/>
+                <property name="auxiliary;wrapIn" value="4"/>
+                <property name="value" value="${passlot.authorizeHeader}"/>
+                <property name="auxiliary;index" value="4"/>
+            </property-collection>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;1">
+                <property name="name" value="passslotId"/>
+                <property name="auxiliary;wrapIn" value="5"/>
+                <property name="value" value="${passslot.id}"/>
+                <property name="auxiliary;index" value="5"/>
+            </property-collection>
+        </properties>
+    </global-element>
+    <global-element name="Bean" type="http://www.springframework.org/schema/beans/bean" entity-id="Bean#2">
+        <properties>
+            <property name="parent"/>
+            <property name="autowire-candidate"/>
+            <property name="autowire"/>
+            <property name="lazy-init"/>
+            <property name="init-method"/>
+            <property name="abstract"/>
+            <property name="auxiliary;wrapIn" value="2"/>
+            <property name="auxiliary;index" value="6"/>
+            <property name="depends-on"/>
+            <property name="factory-method"/>
+            <property name="children"/>
+            <property name="scope"/>
+            <property name="factory-bean"/>
+            <property name="name"/>
+            <property name="id" value="createpass"/>
+            <property name="destroy-method"/>
+            <property name="auxiliary;wrappedIn" value="beans@spring@http://www.springframework.org/schema/beans"/>
+            <property name="class" value="com.capgemini.passslot.resource.CreatePassResource"/>
+            <property name="primary"/>
+            <property-collection name="@http://www.springframework.org/schema/beans/property;0">
+                <property name="ref" value="passutil"/>
+                <property name="name" value="passutil"/>
+                <property name="auxiliary;wrapIn" value="7"/>
+                <property name="auxiliary;index" value="7"/>
+            </property-collection>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="passslotFlow1" type="http://www.mulesoft.org/schema/mule/core/flow" entity-id="df86964c-6e32-4346-bc52-552e88394183">
+        <properties>
+            <property name="initialState"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="8"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#1">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="connector-ref"/>
+                    <property name="address"/>
+                    <property name="method"/>
+                    <property name="mimeType"/>
+                    <property name="encoding"/>
+                    <property name="httpLabel"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="auxiliary;index" value="9"/>
+                    <property name="path" value="${http.path}"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="password"/>
+                    <property name="keep-alive"/>
+                    <property name="port" value="${http.port}"/>
+                    <property name="followRedirects"/>
+                    <property name="host" value="${http.host}"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="transformer-refs"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="user"/>
+                    <property name="contentType"/>
+                    <property name="responseTimeout"/>
+                </properties>
+            </endpoint>
+            <scope name="Processor Chain" type="http://www.mulesoft.org/schema/mule/core/processor-chain" entity-id="Processor Chain#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="auxiliary;index" value="10"/>
+                </properties>
+                <compartment entity-id="compartment#1">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+                        <pattern name="REST" type="http://www.mulesoft.org/schema/mule/jersey/resources" entity-id="REST#1">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="auxiliary;index" value="11"/>
+<property-collection name="@http://www.mulesoft.org/schema/mule/core/component;0">
+    <property name="auxiliary;wrapIn" value="12"/>
+    <property name="auxiliary;index" value="12"/>
+    <property-collection name="@http://www.mulesoft.org/schema/mule/core/spring-object;1">
+        <property name="auxiliary;wrapIn" value="13"/>
+        <property name="bean" value="createpass"/>
+        <property name="auxiliary;index" value="13"/>
+    </property-collection>
+</property-collection>
+                            </properties>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>
