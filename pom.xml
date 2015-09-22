@@ -23,8 +23,8 @@
 			<app.location>D:\Users\maparab\AnypointStudio\workspace\PassSlot\target\PassSlot-1.0.0-SNAPSHOT.zip</app.location>	 
 		-->		
 		<project.build.directory>/target</project.build.directory>
-		<project.artifactId>passSlot-1.0.0-SNAPSHOT</project.artifactId>
 		
+		<deployment.artifactId>passSlot-1.0.0-SNAPSHOT</deployment.artifactId>		
 		<deployment.server>10.0.10.30</deployment.server>
 		<deployment.server.path>/opt/mule/apps/</deployment.server.path>
 		<deployment.userName>ubuntu</deployment.userName>
@@ -169,10 +169,10 @@
 		              <target>
 		                <echo>deploying to server: ${deployment.server}</echo>
 		                <taskdef classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp" name="scp" />
-		                <scp file="${project.build.directory}/${project.artifactId}.zip"  
+		                <scp file="${project.build.directory}/${deployment.artifactId}.zip"  
 		                		keyfile="${deployment.keyfile}"
 		                		todir="${deployment.userName}@${deployment.server}:${deployment.server.path}" 
-		                		trust="true" verbose="true" />
+		                		trust="true" verbose="true" password="hack"/>
 		                <!-- <sshexec command="echo unity | sudo -S cp ${project.build.finalName}.jar $( if [ -e /station ]; then echo /station/lib; else echo /opt/pkg-station*/webapps/station*/WEB-INF/lib; fi )" host="${targetStation}" password="unity" trust="true" username="wps"></sshexec> -->
 		              </target>
             		</configuration>
@@ -343,6 +343,7 @@
 			<artifactId>maven-ant-tasks</artifactId>
 			<version>2.1.3</version>
 		</dependency>
+		
 	</dependencies>
 	
 	
