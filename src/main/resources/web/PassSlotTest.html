@@ -4,7 +4,10 @@
 	<script>
 		function validate()
 		{	
-			var url = 'http://localhost:8081/passslot/pass/create';
+			var loc = location.host;
+			//alert(loc);
+			var url = 'http://' + loc + '/passslot/pass/create';
+			//alert(url);
 			
 			flag = checkEmpty();
 			if(!flag) { return false; }			
