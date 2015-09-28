@@ -52,7 +52,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     
     <flow name="StaticFlow" doc:name="StaticFlow">
 		<http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="${http.port}" doc:name="HTTP" path="passhtml"/>
-        <http:static-resource-handler resourceBase="src/main/resources/web" doc:name="HTTP Static Resource Handler" defaultFile="PassSlotTest.html"/> 
+        <http:static-resource-handler resourceBase="${app.home}/classes/web/PassSlotTest.html" doc:name="HTTP Static Resource Handler" defaultFile="PassSlotTest.html"/> 
 		   	
     </flow>
     
