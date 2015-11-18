@@ -5,7 +5,7 @@
 	xmlns:http="http://www.mulesoft.org/schema/mule/http" 
 	xmlns="http://www.mulesoft.org/schema/mule/core" 
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" 
-	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.1" 
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" 
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:springmongo="http://www.springframework.org/schema/data/mongo"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -34,17 +34,20 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         <spring:bean id="createpass" class="com.capgemini.passslot.resource.CreatePassResource">
         	<spring:property name="passutil" ref="passutil"/>
         </spring:bean>
+        
+        <spring:bean id="HelloImediate" class="com.capgemini.passslot.resource.HelloImmediate"/>   
+    			 
      </spring:beans>
      
  	
     <flow name="passslotFlow1" doc:name="passslotFlow1">
     
-        <http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="${http.port}" doc:name="HTTP" path="${http.path}"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="${http.port}" doc:name="HTTP" path="apis"/>
         <!-- <logger message="I am inside calling rest" level="INFO" doc:name="Logger"/> -->
         <processor-chain doc:name="Processor Chain">
             <jersey:resources doc:name="REST">
                 <component>
-                    <spring-object bean="createpass"/>
+                    <spring-object bean="HelloImediate"/>
                 </component>
             </jersey:resources>
         </processor-chain>
