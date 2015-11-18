@@ -17,15 +17,23 @@
 		<jdkName>JavaSE-1.6</jdkName>
 		<jdk.version>1.7</jdk.version>
 		<junit.version>4.9</junit.version>
-			
+		
+		<!-- 		
+			<mule.home>D:\MakarandParab\Immediate - Govind\software\immediate\Public\Software\MuleSoft\MuleESB\3.5.0\mmc-distribution-mule-console-bundle-3.5.1\mmc-distribution-mule-console-bundle-3.5.1\mule-enterprise-3.5.1</mule.home>
+			<app.location>D:\Users\maparab\AnypointStudio\workspace\PassSlot\target\PassSlot-1.0.0-SNAPSHOT.zip</app.location>	 
+		-->		
 		<project.build.directory>/target</project.build.directory>
 		
 		<deployment.artifactId>passSlot-1.0.0-SNAPSHOT</deployment.artifactId>		
-		<deployment.server>10.0.10.30</deployment.server>
+		<deployment.server>52.1.159.65</deployment.server>
 		<deployment.server.path>/opt/mule/apps/</deployment.server.path>
-		<deployment.userName>ubuntu</deployment.userName>
-		<deployment.keyfile>/home/charu/immediate-devon.pem</deployment.keyfile>
+		<deployment.userName>vagrant</deployment.userName>
+		<deployment.keyfile>/workspace/idf/accelerators/automated-provisioning/puppet/vagrant_key.pub</deployment.keyfile>
 		
+		
+		
+		<!-- <muleApiUrl>http://localhost:8585/mmc-3.5.1</muleApiUrl>
+		<version>1.0</version> -->
 			
 	</properties>
 
@@ -117,7 +125,7 @@
 				</configuration>
 			</plugin>
 			
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9.1</version>
@@ -143,7 +151,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			
 						
 			<!-- http://stackoverflow.com/questions/19059001/how-deploy-maven3-artifact-to-remote-server-using-scp -->						
@@ -191,6 +199,54 @@
 			    <skip>true</skip>
 			  </configuration>
 			</plugin>
+			
+			
+			<!--
+			<plugin>
+				<groupId>org.mule.tools</groupId>
+		        <artifactId>muleesb-maven-plugin</artifactId>
+		        <version>1.0</version>
+		        <configuration>
+		            <muleHome>${mule.home}</muleHome>
+		            <applications>
+		                <application>${app.location}</application>
+		            </applications>
+		        </configuration>
+		        <executions>
+		            <execution>
+		                <id>deploy</id>
+		                <goals>
+		                    <goal>stop</goal>
+		                    <goal>start</goal>
+		                </goals>
+		            </execution>
+		        </executions>
+			</plugin>			
+			<plugin>
+			   <groupId>org.mule.tools</groupId>
+			   <artifactId>mule-mmc-rest-plugin</artifactId>
+			   <version>1.1.1-SNAPSHOT</version>
+			   <executions>
+			     <execution>
+			       <id>mule-deploy</id>
+			       <phase>install</phase>
+			       <goals>
+			         <goal>deploy</goal>
+			       </goals>
+			       <configuration>
+			         <muleApiUrl>${muleApiUrl}</muleApiUrl>
+			         <name>${artifactId}</name>
+			         <username>admin</username>
+			         <password>admin</password>
+			         <appDirectory>src/main/app</appDirectory>
+			         <finalName>${artifactId}-${version}</finalName>
+			         <version>${version}</version>
+			         <serverGroup>Test</serverGroup>
+			       </configuration>
+			     </execution>
+			   </executions>
+			 </plugin> 
+			-->
 						
 		</plugins>
 	
