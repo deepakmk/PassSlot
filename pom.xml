@@ -254,10 +254,10 @@
 	
 	
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.wordnik</groupId>
 			<artifactId>swagger-core</artifactId>
-			<!-- <scope>compile</scope> -->
+			<scope>compile</scope>
 			<version>1.5.1-M2</version>
 			<exclusions>
 				<exclusion>
@@ -265,7 +265,7 @@
 					<artifactId>jsr311-api</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-module-jersey</artifactId>
