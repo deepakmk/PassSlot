@@ -30,12 +30,12 @@ public class HelloImmediate
 	
 	@GET
 	@Produces("application/json")
-	@Path("/deepakmk")
-	public Response deepakmk() {
+	@Path("/deepak")
+	public Response deepak() {
 		System.out.println(".................listAccels");
 		StatusMessage statusMsg = new StatusMessage();
 		statusMsg.setStatusCode("200");
-		statusMsg.setStatusMessage("Deepakmk");
+		statusMsg.setStatusMessage("Deepak chnaged back");
 		return Response.ok().entity(statusMsg).build();
 	}
 }
