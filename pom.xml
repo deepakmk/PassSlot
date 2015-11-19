@@ -173,6 +173,10 @@
 		                		keyfile="${deployment.keyfile}"
 		                		todir="${deployment.userName}@${deployment.server}:${deployment.server.path}" 
 		                		trust="true" verbose="true" password="hack"/>
+								
+								
+							<taskdef classname="org.apache.tools.ant.taskdefs.optional.ssh.SSHExec" name="sshexec"/>
+							<sshexec command="/opt/mule/bin/mule restart" host="52.1.159.65" password="hack" username="ubuntu" keyfile="/home/jenkins/mule.key"/>
 		                <!-- <sshexec command="echo unity | sudo -S cp ${project.build.finalName}.jar $( if [ -e /station ]; then echo /station/lib; else echo /opt/pkg-station*/webapps/station*/WEB-INF/lib; fi )" host="${targetStation}" password="unity" trust="true" username="wps"></sshexec> -->
 		              </target>
             		</configuration>
