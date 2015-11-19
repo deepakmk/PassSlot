@@ -27,8 +27,8 @@
 		<deployment.artifactId>passSlot-1.0.0-SNAPSHOT</deployment.artifactId>		
 		<deployment.server>52.1.159.65</deployment.server>
 		<deployment.server.path>/opt/mule/apps/</deployment.server.path>
-		<deployment.userName>vagrant</deployment.userName>
-		<deployment.keyfile>/workspace/idf/accelerators/automated-provisioning/puppet/vagrant_key.pub</deployment.keyfile>
+		<deployment.userName>ubuntu</deployment.userName>
+		<deployment.keyfile>/home/jenkins/mule.key</deployment.keyfile>
 		
 		
 		
