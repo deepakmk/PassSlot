@@ -103,7 +103,7 @@
             <property name="depends-on"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="passslotFlow1" entity-id="960081ff-2415-4262-a8f6-da328d502117">
+    <flow SubFlow="false" name="passslotFlow1" entity-id="211f3a04-e72b-4cae-9437-49e563d5ca90">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -124,7 +124,7 @@
                     <property name="exchange-pattern" value="request-response"/>
                     <property name="updated"/>
                     <property name="auxiliary;erased;encoding" value="true"/>
-                    <property name="path" value="apis"/>
+                    <property name="path" value="${http.path}"/>
                     <property name="encoding" value=""/>
                     <property name="responseTransformer-refs" value=""/>
                     <property name="auxiliary;index" value="10"/>
@@ -169,7 +169,7 @@
         <property name="auxiliary;wrapIn" value="14"/>
     </property-collection>
 </property-collection>
-<property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;233526392">
+<property-collection name="@http://www.mulesoft.org/schema/mule/core/refInterceptorStackType;1938990297">
     <property name="ref" value=""/>
     <property name="isProcessed$$$$" value="true"/>
 </property-collection>
@@ -182,7 +182,7 @@
         </lane>
         <apikit>false</apikit>
     </flow>
-    <flow SubFlow="false" name="StaticFlow" entity-id="e44d39df-411e-44b2-8ace-622532a72e60">
+    <flow SubFlow="false" name="StaticFlow" entity-id="52de48ff-55b0-416b-a1ff-a2f70ca78135">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>

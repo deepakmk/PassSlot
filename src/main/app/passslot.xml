@@ -42,7 +42,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
  	
     <flow name="passslotFlow1" doc:name="passslotFlow1">
     
-        <http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="${http.port}" doc:name="HTTP" path="apis"/>
+        <http:inbound-endpoint exchange-pattern="request-response" host="${http.host}" port="${http.port}" doc:name="HTTP" path="${http.path}"/>
         <!-- <logger message="I am inside calling rest" level="INFO" doc:name="Logger"/> -->
         <processor-chain doc:name="Processor Chain">
             <jersey:resources doc:name="REST">

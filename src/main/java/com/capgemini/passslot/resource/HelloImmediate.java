@@ -1,5 +1,8 @@
 package com.capgemini.passslot.resource;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,7 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.capgemini.passslot.response.StatusMessage;
 
-@Path("/hello")
+@Path("/list")
 @Produces({ "application/json", "application/xml" })
 @Consumes({ "application/json", "application/xml" })
 public class HelloImmediate 
@@ -19,23 +22,14 @@ public class HelloImmediate
 	
 	@GET
 	@Produces("application/json")
-	@Path("/list")
-	public Response listAccels() {
-		System.out.println(".................listAccels");
-		StatusMessage statusMsg = new StatusMessage();
-		statusMsg.setStatusCode("200");
-		statusMsg.setStatusMessage("SUCCESSSSSS");
-		return Response.ok().entity(statusMsg).build();
+	@Path("/taxis")
+	public Response listTaxis() {
+		Map<String , String> taxis = new HashMap<String, String>();
+		taxis.put("Ola", "Yellow");
+		taxis.put("Uber", "Blue");
+		taxis.put("Meru", "Green");
+		return Response.ok().entity(taxis).build();
 	}
 	
-	@GET
-	@Produces("application/json")
-	@Path("/charu")
-	public Response deepak() {
-		System.out.println(".................listAccels");
-		StatusMessage statusMsg = new StatusMessage();
-		statusMsg.setStatusCode("200");
-		statusMsg.setStatusMessage("charu chnaged ");
-		return Response.ok().entity(statusMsg).build();
-	}
+	
 }
