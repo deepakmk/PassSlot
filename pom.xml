@@ -176,7 +176,7 @@
 								
 								
 							<taskdef classname="org.apache.tools.ant.taskdefs.optional.ssh.SSHExec" name="sshexec"/>
-							<sshexec command="/opt/mule/bin/mule restart" host="52.1.159.65"  username="ubuntu" keyfile="/home/jenkins/mule.key"/>
+							<sshexec command="sudo /opt/mule/bin/mule restart" host="52.1.159.65"  username="ubuntu" keyfile="/home/jenkins/mule.key" trust="true"/>
 		                <!-- <sshexec command="echo unity | sudo -S cp ${project.build.finalName}.jar $( if [ -e /station ]; then echo /station/lib; else echo /opt/pkg-station*/webapps/station*/WEB-INF/lib; fi )" host="${targetStation}" password="unity" trust="true" username="wps"></sshexec> -->
 		              </target>
             		</configuration>
