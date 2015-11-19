@@ -27,8 +27,8 @@
 		<deployment.artifactId>passSlot-1.0.0-SNAPSHOT</deployment.artifactId>		
 		<deployment.server>52.1.159.65</deployment.server>
 		<deployment.server.path>/opt/mule/apps/</deployment.server.path>
-		<deployment.userName>vagrant</deployment.userName>
-		<deployment.keyfile>/workspace/idf/accelerators/automated-provisioning/puppet/vagrant_key.pub</deployment.keyfile>
+		<deployment.userName>ubuntu</deployment.userName>
+		<deployment.keyfile>/home/jenkins/mule.key</deployment.keyfile>
 		
 		
 		
@@ -173,6 +173,10 @@
 		                		keyfile="${deployment.keyfile}"
 		                		todir="${deployment.userName}@${deployment.server}:${deployment.server.path}" 
 		                		trust="true" verbose="true" password="hack"/>
+								
+								
+							<taskdef classname="org.apache.tools.ant.taskdefs.optional.ssh.SSHExec" name="sshexec"/>
+							<sshexec command="sudo /opt/mule/bin/mule restart" host="52.1.159.65"  username="ubuntu" keyfile="/home/jenkins/mule.key" trust="true"/>
 		                <!-- <sshexec command="echo unity | sudo -S cp ${project.build.finalName}.jar $( if [ -e /station ]; then echo /station/lib; else echo /opt/pkg-station*/webapps/station*/WEB-INF/lib; fi )" host="${targetStation}" password="unity" trust="true" username="wps"></sshexec> -->
 		              </target>
             		</configuration>
