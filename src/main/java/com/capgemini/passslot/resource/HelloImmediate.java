@@ -31,5 +31,14 @@ public class HelloImmediate
 		return Response.ok().entity(taxis).build();
 	}
 	
+	@GET
+	@Produces("application/json")
+	@Path("/public")
+	public Response publicTransport() {
+		Map<String , String> publics = new HashMap<String, String>();
+		publics.put("Bus", "Red");
+		publics.put("Metro", "Grey");
+		return Response.ok().entity(publics).build();
+	}
 	
 }
