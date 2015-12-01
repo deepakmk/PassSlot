@@ -28,6 +28,7 @@ public class HelloImmediate
 		taxis.put("Ola", "Yellow");
 		taxis.put("Uber", "Blue");
 		taxis.put("Meru", "Green");
+		taxis.put("taxi4sure", "white");
 		return Response.ok().entity(taxis).build();
 	}
 	
