@@ -20,17 +20,17 @@ public class HelloImmediate
 {
 	private Logger log = Logger.getLogger(HelloImmediate.class);
 	
-//	@GET
-//	@Produces("application/json")
-//	@Path("/taxis")
-//	public Response listTaxis() {
-//		Map<String , String> taxis = new HashMap<String, String>();
-//		taxis.put("Ola", "Yellow");
-//		taxis.put("Uber", "Blue");
-//		taxis.put("Meru", "Green");
-//		taxis.put("taxi4sure", "white");
-//		return Response.ok().entity(taxis).build();
-//	}
+	@GET
+	@Produces("application/json")
+	@Path("/taxis")
+	public Response listTaxis() {
+		Map<String , String> taxis = new HashMap<String, String>();
+		taxis.put("Ola", "Yellow");
+		taxis.put("Uber", "Blue");
+		taxis.put("Meru", "Green");
+		taxis.put("taxi4sure", "white");
+		return Response.ok().entity(taxis).build();
+	}
 
 	@GET
 	@Produces("application/json")
