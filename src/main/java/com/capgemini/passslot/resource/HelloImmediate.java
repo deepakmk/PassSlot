@@ -41,7 +41,7 @@ public class HelloImmediate
 		customers.put("Trump", "Donald");
 		customers.put("Carson", "Ben");
 		customers.put("Rubio", "Marco");
-        customers.put("Kundu","Kirit");
+//        customers.put("Kundu","Kirit");
 		return Response.ok().entity(customers).build();
 	}
 	
