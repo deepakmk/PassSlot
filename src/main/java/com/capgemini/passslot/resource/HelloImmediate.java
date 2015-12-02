@@ -32,17 +32,17 @@ public class HelloImmediate
 		return Response.ok().entity(taxis).build();
 	}
 
-	@GET
-	@Produces("application/json")
-	@Path("/customers")
-	public Response listCustomers() {
-		Map<String , String> customers = new HashMap<String, String>();
-		customers.put("Clinton", "Hillary");
-		customers.put("Trump", "Donald");
-		customers.put("Carson", "Ben");
-		customers.put("Rubio", "Marco");
-		return Response.ok().entity(customers).build();
-	}
+//	@GET
+//	@Produces("application/json")
+//	@Path("/customers")
+//	public Response listCustomers() {
+//		Map<String , String> customers = new HashMap<String, String>();
+//		customers.put("Clinton", "Hillary");
+//		customers.put("Trump", "Donald");
+//		customers.put("Carson", "Ben");
+//		customers.put("Rubio", "Marco");
+//		return Response.ok().entity(customers).build();
+//	}
 	
 	@GET
 	@Produces("application/json")
