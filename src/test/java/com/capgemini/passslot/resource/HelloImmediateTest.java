@@ -47,4 +47,19 @@ public class HelloImmediateTest {
     public void testPublicTransport() throws Exception {
 
     }
+
+    @Test
+    public void testListCustomers() throws Exception {
+            res = hi.listCustomers();
+            Assert.assertNotNull(res);
+            Assert.assertTrue(res.getEntity().toString().contains("Clinton"));
+            System.out.println("res is "+ res.getEntity().toString());
+    }
+
+    @Test
+    public void testListServices() throws Exception {
+            res = hi.listServices();
+            Assert.assertNotNull(res);
+
+    }
 }
