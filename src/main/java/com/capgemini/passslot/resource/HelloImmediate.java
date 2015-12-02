@@ -20,29 +20,29 @@ public class HelloImmediate
 {
 	private Logger log = Logger.getLogger(HelloImmediate.class);
 	
-	@GET
-	@Produces("application/json")
-	@Path("/taxis")
-	public Response listTaxis() {
-		Map<String , String> taxis = new HashMap<String, String>();
-		taxis.put("Ola", "Yellow");
-		taxis.put("Uber", "Blue");
-		taxis.put("Meru", "Green");
-		taxis.put("taxi4sure", "white");
-		return Response.ok().entity(taxis).build();
-	}
-
 //	@GET
 //	@Produces("application/json")
-//	@Path("/customers")
-//	public Response listCustomers() {
-//		Map<String , String> customers = new HashMap<String, String>();
-//		customers.put("Clinton", "Hillary");
-//		customers.put("Trump", "Donald");
-//		customers.put("Carson", "Ben");
-//		customers.put("Rubio", "Marco");
-//		return Response.ok().entity(customers).build();
+//	@Path("/taxis")
+//	public Response listTaxis() {
+//		Map<String , String> taxis = new HashMap<String, String>();
+//		taxis.put("Ola", "Yellow");
+//		taxis.put("Uber", "Blue");
+//		taxis.put("Meru", "Green");
+//		taxis.put("taxi4sure", "white");
+//		return Response.ok().entity(taxis).build();
 //	}
+
+	@GET
+	@Produces("application/json")
+	@Path("/customers")
+	public Response listCustomers() {
+		Map<String , String> customers = new HashMap<String, String>();
+		customers.put("Clinton", "Hillary");
+		customers.put("Trump", "Donald");
+		customers.put("Carson", "Ben");
+		customers.put("Rubio", "Marco");
+		return Response.ok().entity(customers).build();
+	}
 	
 	@GET
 	@Produces("application/json")
