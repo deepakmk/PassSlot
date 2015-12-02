@@ -44,6 +44,18 @@ public class HelloImmediate
 //        customers.put("Kundu","Kirit");
 		return Response.ok().entity(customers).build();
 	}
+    @GET
+    @Produces("application/json")
+    @Path("/services")
+    public Response listServices() {
+        Map<String , String> services = new HashMap<String, String>();
+        services.put("1", "Internet Banking");
+        services.put("2", "Internet Banking Plus");
+        services.put("3", "Text Message Banking");
+        services.put("4", "Telephone banking");
+//        customers.put("5","Paym");
+        return Response.ok().entity(services).build();
+    }
 	
 	@GET
 	@Produces("application/json")
