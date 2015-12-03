@@ -53,7 +53,7 @@ public class HelloImmediate
         services.put("2", "Internet Banking Plus");
         services.put("3", "Text Message Banking");
 		services.put("4","Paym");
-      //  services.put("5", "Telephone banking");
+        services.put("5", "Telephone banking");
         return Response.ok().entity(services).build();
     }
 	
